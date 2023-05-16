@@ -58,7 +58,7 @@ const Cart = () => {
       body: JSON.stringify({
         inddata
       }),
-      credentials:"include"
+    
     });
 
 

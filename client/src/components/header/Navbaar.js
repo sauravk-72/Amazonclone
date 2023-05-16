@@ -35,7 +35,7 @@ const Navbaar = () => {
     const [dropen, setDropen] = useState(false)
 
     const getdetailvaliduser = async () => {
-        const res = await fetch("/validuser", {
+        const res = await fetch("https://amazonclonebackbysk.onrender.com/validuser", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -65,7 +65,7 @@ const Navbaar = () => {
     }
 
     const logoutuser = async () => {
-        const res2 = await fetch("/lougout", {
+        const res2 = await fetch("https://amazonclonebackbysk.onrender.com/lougout", {
             method: "GET",
             headers: {
                 Accept: "application/json",

@@ -33,7 +33,7 @@ const Sign_in = () => {
 
         const { email, password } = logdata;
 
-        const res = await fetch("/login", {
+        const res = await fetch("https://amazonclonebackbysk.onrender.com/login", {
             method: "POST",
            credentials:"include",
             headers: {

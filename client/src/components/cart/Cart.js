@@ -49,7 +49,7 @@ const Cart = () => {
   
   // add cart function
   const addtocart = async (id) => {
-    const checkres = await fetch(`/addcart/${id}`, {
+    const checkres = await fetch(`https://amazonclonebackbysk.onrender.com/addcart/${id}`, {
       method: "POST",
       headers: {
         Accept:"application/json",

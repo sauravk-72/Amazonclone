@@ -24,7 +24,7 @@ const port = process.env.PORT || 80;
 
 
 app.use(express.json()); /* It parses incoming JSON requests and puts the parsed data in req.body.*/
-app.use(cors());
+app.use(cors({credentials:true, origin:"http://amazonclonefrontbysk.onrender.com"}));
 app.use(Router);
 app.use(cookieParser());
 

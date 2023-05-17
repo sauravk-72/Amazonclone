@@ -4,14 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ContextProvider from "./components/context/ContextProvider";
-import Store from "./Store";
+import store from "./store";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ContextProvider>
-    <Provider Store={Store}>
+    <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

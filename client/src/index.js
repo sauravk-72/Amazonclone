@@ -4,19 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ContextProvider from "./components/context/ContextProvider";
-
+import Store from "./Store";
 import { BrowserRouter } from "react-router-dom";
-
+import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ContextProvider>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-</ContextProvider>
-,
-document.getElementById('root')
+    <Provider Store={Store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </ContextProvider>
+  ,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

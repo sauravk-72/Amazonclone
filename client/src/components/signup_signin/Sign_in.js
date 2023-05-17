@@ -63,6 +63,7 @@ const Sign_in = () => {
                 position: "top-center",
             })
             setData({...logdata,email:"",password:""});
+           
         }
     }
 

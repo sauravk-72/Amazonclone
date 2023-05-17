@@ -35,7 +35,7 @@ const items = products.map((e) => (
 ))
 
 
-const Slide = ({ title }) => {
+const Slide = ({ title,products }) => {
     return (
         <div className='products_section'>
             <div className='products_deal'>

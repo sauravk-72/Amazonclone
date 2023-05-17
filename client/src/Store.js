@@ -7,9 +7,9 @@ import {legacy_createStore as createStore} from 'redux'
 
 const middleware = [thunk];
 
-const Store = createStore(
+const store = createStore(
     rootreducers,
     composeWithDevTools(applyMiddleware(...middleware))
 );
 
-export default Store;
+export default store;

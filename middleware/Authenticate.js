@@ -22,7 +22,7 @@ const Authenticate = async(req,res,next)=>{
 
     } catch (error) {
         res.status(401).send("unautherized:No token provide")
-        console.log(error)
+        console.log(error +"token not generated")
     }
 }
 

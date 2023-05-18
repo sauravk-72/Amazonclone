@@ -2,9 +2,11 @@ export const getProducts =()=>async(dispatch)=>{
     try {
         const data =await fetch("/getproducts",{
             method :"GET",
+            credentials:"include",
             headers:{
                 "Content-type":"application/json"
             }
+            
         });
         const res=await data.json();
         console.log(res)

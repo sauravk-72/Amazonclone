@@ -24,7 +24,8 @@ const Cart = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
-      }
+      },
+      credentials: "include", 
     });
     
     
@@ -58,7 +59,7 @@ const Cart = () => {
       body: JSON.stringify({
         inddata
       }),
-      
+      credentials: "include", 
     });
 
 

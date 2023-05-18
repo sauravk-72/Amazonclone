@@ -16,7 +16,7 @@ const Option = ({deletedata,get}) => {
           Accept:"application/json",
           "Content-type":"application/json"
         },
-        
+        credentials: "include", 
       });
 
       const data = await res.json();

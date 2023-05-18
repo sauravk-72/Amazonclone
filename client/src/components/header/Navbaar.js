@@ -41,7 +41,7 @@ const Navbaar = () => {
                 Accept: "application/json",
                 "Content-Type": "application/json"
             },
-           
+            credentials: "include", 
         });
 
         const data = await res.json();
@@ -71,7 +71,7 @@ const Navbaar = () => {
                 Accept: "application/json",
                 "Content-Type": "application/json"
             },
-            
+            credentials: "include", 
         });
 
         const data2 = await res2.json();

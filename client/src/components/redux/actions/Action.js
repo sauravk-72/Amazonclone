@@ -1,8 +1,8 @@
 export const getProducts =()=>async(dispatch)=>{
     try {
-        const data =await fetch("/getproducts",{
+        const data =await fetch("https://amazonclonebackbysk.onrender.com/getproducts",{
             method :"GET",
-            credentials:"include",
+          
             headers:{
                 "Content-type":"application/json"
             }

@@ -133,7 +133,7 @@ Router.post("/login", async (req, res,) => {
                 expires: new Date(Date.now() + 900000),
                 httpOnly: "true"
             })
-            res.send(req.cookies.Amazonweb);
+            
 
             return res.status(201).json(userlogin);
         }

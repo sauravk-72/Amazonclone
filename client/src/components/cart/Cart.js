@@ -25,7 +25,7 @@ const Cart = () => {
       headers: {
         "Content-Type": "application/json"
       },
-      credentials: "include", 
+      
     });
     
     

@@ -5,9 +5,9 @@ const Products = require("../models/Productsschema");
 const USER = require("../models/Userschema");
 const Authenticate = require("../middleware/Authenticate");
 const bcrypt = require("bcryptjs");
-const cookieParser = require("cookie-parser");
+
 const Address = require("../models/Addressschema");
-Router.use(cookieParser());
+
 
 
 // get productsdata api
@@ -134,7 +134,7 @@ Router.post("/login", async (req, res,) => {
                 httpOnly: "true"
             })
 
-            res.status(201).json(userlogin);
+            return res.status(201).json(userlogin);
         }
 
 

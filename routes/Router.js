@@ -128,7 +128,7 @@ Router.post("/login", async (req, res,) => {
             res.status(400).json({ error: " Matchinvalid detials" });
         } else {
 
-            const authtoken = jwt.sign(data, JWT_SECRET);
+            const authtoken = jwt.sign(data, secretKey);
             res.json( authtoken)
             // token genrate
             //const token = await userlogin.generateAuthtokenn();

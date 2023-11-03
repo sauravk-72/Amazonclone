@@ -1,0 +1,15 @@
+.home_section{
+    width: 100%;
+    position: relative;
+    
+    background-color: white;
+    min-height: calc(100vh-60px);
+    border-bottom: 2px solid rgb(199,199,199);
+    
+}
+
+@media (max-width:768px){
+    .center_img img{
+      width: 90%;
+    }
+}

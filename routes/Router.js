@@ -5,6 +5,8 @@ const Products = require("../models/Productsschema");
 const USER = require("../models/Userschema");
 const Authenticate = require("../middleware/Authenticate");
 const bcrypt = require("bcryptjs");
+var jwt = require('jsonwebtoken');
+const secretKey = process.env.KEY;
 
 const Address = require("../models/Addressschema");
 

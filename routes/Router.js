@@ -125,14 +125,17 @@ Router.post("/login", async (req, res,) => {
         if (!isMatch) {
             res.status(400).json({ error: " Matchinvalid detials" });
         } else {
+
+            const authtoken = jwt.sign(data, JWT_SECRET);
+            res.json( authtoken)
             // token genrate
-            const token = await userlogin.generateAuthtokenn();
+            //const token = await userlogin.generateAuthtokenn();
             //console.log(token);
 
-            res.cookie("Amazonweb", token, {
-                expires: new Date(Date.now() + 900000),
-                httpOnly: "true"
-            })
+            //res.cookie("Amazonweb", token, {
+               // expires: new Date(Date.now() + 900000),
+                //httpOnly: "true"
+           // })
             
 
             return res.status(201).json(userlogin);

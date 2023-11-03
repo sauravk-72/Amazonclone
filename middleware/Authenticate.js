@@ -4,7 +4,8 @@ const secretKey = process.env.KEY;
 
 const Authenticate = async(req,res,next)=>{
     try {
-        const token = req.cookies.Amazonweb;
+        //const token = req.cookies.Amazonweb;
+        const token=req.header('auth-token');
 
         const verifyToken = jwt.verify(token,secretKey);
         console.log(verifyToken);

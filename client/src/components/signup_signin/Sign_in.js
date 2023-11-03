@@ -59,6 +59,8 @@ const Sign_in = () => {
         }else{
             console.log("data valid");
             setAccount(data)
+            //Changes
+            localStorage.setItem('token', json.authtoken);
             toast.success("user valid",{
                 position: "top-center",
             })

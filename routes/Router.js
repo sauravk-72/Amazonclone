@@ -63,9 +63,12 @@ Router.post("/register", async (req, res) => {
 
 
             const storedata = await finalUser.save();
-            console.log(storedata);
+        
+            const authtoken = jwt.sign(storedata, secretKey);
+            success = true;
 
-            res.status(201).json(storedata);
+            res.json({ success, authtoken })
+
         }
 
 
@@ -128,8 +131,7 @@ Router.post("/login", async (req, res,) => {
             res.status(400).json({ error: " Matchinvalid detials" });
         } else {
 
-            const authtoken = jwt.sign(data, secretKey);
-            res.json( authtoken)
+            
             // token genrate
             //const token = await userlogin.generateAuthtokenn();
             //console.log(token);
@@ -138,7 +140,14 @@ Router.post("/login", async (req, res,) => {
                // expires: new Date(Date.now() + 900000),
                 //httpOnly: "true"
            // })
-            
+            const data = {
+                    userlogin, token
+                }
+
+                const authtoken = jwt.sign(data, secretKey);
+                success = true;
+
+                res.json({ success, authtoken })
 
             
         }

@@ -39,17 +39,19 @@ const Sign_up = () => {
             })
         });
 
-        const data = await res.json();
+        //const data = await res.json();
         // console.log(data);
+        const json = await res.json();
+        console.log(json)
 
-
-        if (res.status === 422 || !data) {
+        if (res.status === 422 || !json) {
             // alert("no data")
             toast.warn("invalid details", {
                 position: "top-center",
             })
         } else {
             // alert("data succesfully adde");
+            localStorage.setItem("token",json.authtoken)
             toast.success("data succesfully added", {
                 position: "top-center",
             })

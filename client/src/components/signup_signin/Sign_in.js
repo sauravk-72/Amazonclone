@@ -48,20 +48,23 @@ const Sign_in = () => {
         });
 
 
-        const data = await res.json();
-        console.log(data);
+       // const data = await res.json();
+        //console.log(data);
+        const json = await res.json();
+        console.log(json)
 
-        if(res.status == 400 || !data){
+        if(res.status == 400 || !json){
             console.log("invalid details");
             toast.warn("invalid details",{
                 position: "top-center",
             })
         }else{
             console.log("data valid");
-            const json = await res.json()
-            setAccount(data)
+            
+            
              //Changes
              localStorage.setItem('token', json.authtoken);
+             setAccount(json)
             toast.success("user valid",{
                 position: "top-center",
             })

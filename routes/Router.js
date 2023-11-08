@@ -63,11 +63,11 @@ Router.post("/register", async (req, res) => {
 
 
             const storedata = await finalUser.save();
+            console.log({"router":storedata})
         
             const authtoken = jwt.sign(storedata, secretKey);
-            success = true;
-
-            res.json({ success, authtoken })
+            
+            res.json( authtoken )
 
         }
 
@@ -145,9 +145,9 @@ Router.post("/login", async (req, res,) => {
                 }
 
                 const authtoken = jwt.sign(data, secretKey);
-                success = true;
+               
 
-                res.json({ success, authtoken })
+                res.json( authtoken )
 
             
         }

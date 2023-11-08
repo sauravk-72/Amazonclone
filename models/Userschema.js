@@ -37,14 +37,14 @@ const Userschema = new mongoose.Schema({
         required: true,
         minlength: 6
     },
-  // tokens: [
-  //     {
-  //         token: {
-  //             type: String,
-  //             required: true,
-  //         }
-  //     }
-  // ],
+ tokens: [
+     {
+         token: {
+             type: String,
+             required: true,
+         }
+     }
+ ],
     carts: Array
 });
 
@@ -59,19 +59,19 @@ Userschema.pre("save", async function (next) {
 
 });
 
-// token generator
-//Userschema.methods.generateAuthtokenn =async function(){
-//    try{
-//        let token=jwt.sign({_id:this._id},secretKey,{
-//            expiresIn:"1d",
-//        });
-//        this.tokens =this.tokens.concat({token:token});
-//        await this.save();
-//        return token;
-//    }catch(error){
-//        console.log(error);
-//    }
-//}
+ //token generator
+Userschema.methods.generateAuthtokenn =async function(){
+    try{
+        let token=jwt.sign({_id:this._id},secretKey,{
+            expiresIn:"1d",
+        });
+        this.tokens =this.tokens.concat({token:token});
+        await this.save();
+        return token;
+    }catch(error){
+        console.log(error);
+    }
+}
 
 
 // add tocart data

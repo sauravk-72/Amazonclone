@@ -65,9 +65,9 @@ Router.post("/register", async (req, res) => {
             const storedata = await finalUser.save();
             console.log({"router":storedata})
         
-            const authtoken = jwt.sign(storedata, secretKey);
+            //const authtoken = jwt.sign(storedata, secretKey);
             
-            res.json( authtoken )
+           // res.json( authtoken )
 
         }
 
@@ -132,9 +132,9 @@ Router.post("/login", async (req, res,) => {
         } else {
 
             
-            // token genrate
-            //const token = await userlogin.generateAuthtokenn();
-            //console.log(token);
+             //token genrate
+            const token = await userlogin.generateAuthtokenn();
+            console.log(token);
 
             //res.cookie("Amazonweb", token, {
                // expires: new Date(Date.now() + 900000),
@@ -144,10 +144,10 @@ Router.post("/login", async (req, res,) => {
                     userlogin, token
                 }
 
-                const authtoken = jwt.sign(data, secretKey);
+              //  const authtoken = jwt.sign(data, secretKey);
                
 
-                res.json( authtoken )
+                res.json( data )
 
             
         }

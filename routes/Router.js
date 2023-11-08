@@ -64,6 +64,7 @@ Router.post("/register", async (req, res) => {
 
             const storedata = await finalUser.save();
             console.log({"router":storedata})
+            res.json(storedata)
         
             //const authtoken = jwt.sign(storedata, secretKey);
             
@@ -140,14 +141,14 @@ Router.post("/login", async (req, res,) => {
                // expires: new Date(Date.now() + 900000),
                 //httpOnly: "true"
            // })
-            const data = {
-                    userlogin, token
-                }
+            //const data = {
+             //       userlogin, token
+           //     }
 
               //  const authtoken = jwt.sign(data, secretKey);
                
 
-                res.json( data )
+                res.json( userlogin,token )
 
             
         }

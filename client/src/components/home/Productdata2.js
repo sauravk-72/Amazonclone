@@ -25,8 +25,8 @@ export const products2 = [
             longTitle:'Puma Unisex-Adult Playmaker Pro Basketball Shoe'
         },
         price:{
-            mrp: '8,999',
-            cost: '5,579' ,
+            mrp: '8999',
+            cost: '5579' ,
             discount: '38%'
         },
         description:'Puma Unisex-Adult Playmaker Pro Basketball Shoe'
@@ -40,7 +40,7 @@ export const products2 = [
             longTitle:'The Souled Store Men T-Shirt'
         },
         price:{
-            mrp:'1,499            ' ,
+            mrp:'1499' ,
             cost:'996' ,
             discount: '34'
         },
@@ -56,7 +56,7 @@ export const products2 = [
             longTitle:'Official Popeye: Comic Strip Mens and Boys T-Shirts'
         },
         price:{
-            mrp: '1,499',
+            mrp: '1499',
             cost: '1049',
             discount: '30%'
         },
@@ -72,7 +72,7 @@ export const products2 = [
             longTitle:'Nike ODI Men Jersey'
         },
         price:{
-            mrp: '3,795',
+            mrp: '3795',
             cost: '2279',
             discount: '40%'
         },

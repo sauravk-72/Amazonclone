@@ -42,8 +42,8 @@ export const products3 = [
             longTitle:'ASUS ROG Zephyrus M16 (2022)'
         },
         price:{
-            mrp: '3,11,990', 
-            cost: '2,99,900',
+            mrp: '311990', 
+            cost: '299900',
             discount: '15%'
         },
         description:'ASUS ROG Zephyrus M16 (2022), 16-inch (40.64 cms) 2K QHD 165Hz/3ms, Intel Core i9-12900H 12th Gen, RTX 3070 Ti 8GB Graphics, Gaming Laptop (32GB/1TB SSD/Win 11/Office 2021/Black/2 Kg), GU603ZW-K8033WS',
@@ -58,8 +58,8 @@ export const products3 = [
             longTitle:'Sony Alpha ILCE-6400M 24.2MP Mirrorless Digital SLR Camera '
         },
         price:{
-            mrp:'1,16,490' ,
-            cost: '1,02,989',
+            mrp:'116490' ,
+            cost: '102989',
             discount: '12%'
         },
         description:'Sony Alpha ILCE-6400M 24.2MP Mirrorless Digital SLR Camera (Black) with 18-135mm Power Zoom Lens (APS-C Sensor, Real-Time Eye Auto Focus, 4K Vlogging Camera, Tiltable LCD) - Black',

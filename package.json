@@ -11,7 +11,8 @@
     "start": "node app.js",
     "build": "react-scripts build"
   },
-  "proxy": "http://amazonclonefrontbysk.onrender.com",
+  
+  "proxy": "https://amazonclonefrontbysk.onrender.com",
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -17,7 +17,7 @@ const Products=require("./models/Productsschema");
 
 const DefaultData=require("./DefaultData");
 
-const port = process.env.PORT || 80;
+const port = 5000;
 
 /* The app.use() function adds a new middleware to the app.
  Essentially, whenever a request hits your backend, Express will execute the functions you passed to app.use() in order.*/

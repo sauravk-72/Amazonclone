@@ -15,6 +15,7 @@ const Address = require("../models/Addressschema");
 // get productsdata api
 Router.get("/getproducts", async (req, res) => {
     try {
+        //find is mongodb method...call find method in products schema
         const Productsdata = await Products.find();
         res.status(201).json(Productsdata);
     } catch (error) {
@@ -25,7 +26,12 @@ Router.get("/getproducts", async (req, res) => {
 //get individual data
 Router.get("/getproductsone/:id", async (req, res) => {
     try {
+        //we will call this url,we will get id from url paarameters
+
+        //ANOTHER METHOD
+        //const id=req.params.id;
         const { id } = req.params;
+        //in mongodb,every data is given id...first id will will databas id and second one is from params...matching both ids 
         const individualdata = await Products.findOne({ id: id });
         res.status(201).json(individualdata);
     } catch (error) {
@@ -40,6 +46,7 @@ Router.get("/getproductsone/:id", async (req, res) => {
 //register data
 Router.post("/register", async (req, res) => {
     //console.log(req.body);
+    //getting values from the body
     const { fname, email, mobile, password, cpassword } = req.body;
 
     if (!fname || !email || !mobile || !password || !cpassword) {
@@ -49,31 +56,23 @@ Router.post("/register", async (req, res) => {
 
 
     try {
+        //matching the email in databse with the entered email by user
         const preuser = await USER.findOne({ email: email });
-
+        //if email is already present in database
         if (preuser) {
-            res.status(422).json({ error: "this user is already present" })
+            res.status(422).json({ error: "This Email already exists" })
         } else if (password !== cpassword) {
-            res.status(422).json({ error: "password and cpassword not match" })
+            res.status(422).json({ error: "password and confirm password are not matching" })
         } else {
+            //create user
             const finalUser = new USER({
                 fname, email, mobile, password, cpassword
             });
-
-
-
+            //store the user in database
             const storedata = await finalUser.save();
             console.log({"router":storedata})
             res.json(storedata)
-        
-            //const authtoken = jwt.sign(storedata, secretKey);
-            
-           // res.json( authtoken )
-
         }
-
-
-
     } catch (error) {
         res.status(401).json(error);
     }
@@ -112,49 +111,37 @@ Router.post("/login", async (req, res,) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        res.status(400).json({ error: "fill the all data" })
+        res.status(400).json({ error: "Fill all details" })
     };
 
     try {
         const userlogin = await USER.findOne({ email: email });
         console.log(userlogin + "user value");
 
-
+if(userlogin){
+    //compare the password by decrypting the password
         const isMatch = await bcrypt.compare(password, userlogin.password);
         console.log(isMatch + "pass match");
-
-
-
-
-
-
         if (!isMatch) {
-            res.status(400).json({ error: " Matchinvalid detials" });
+            res.status(400).json({ error: " Wrong Password" });
         } else {
-
-            
              //token genrate
-            const token = await userlogin.generateAuthtokenn();
+            const token = await userlogin.generateAuthToken();
             console.log(token);
-
             //res.cookie("Amazonweb", token, {
                // expires: new Date(Date.now() + 900000),
                 //httpOnly: "true"
-           // })
-            //const data = {
-             //       userlogin, token
-           //     }
-
-              //  const authtoken = jwt.sign(data, secretKey);
-               
-
-                res.json( userlogin,token )
-
+              const result={
+                userlogin,token
+            }
+            return res.status(200).json(result)
             
         }
-
-
-    } catch (error) {
+    }else{
+res.status(400).json({error:"Invalid details"})
+    }
+}     
+    catch (error) {
         res.status(400).json({ error: "invalid detials user" })
     }
 })
@@ -216,7 +203,7 @@ Router.get("/validuser", Authenticate, async (req, res) => {
 Router.delete("/remove/:id", Authenticate, async (req, res) => {
     try {
         const { id } = req.params;
-
+//filter the items in usercart..and return the items which doesnt match with product id...hence product is removed
         req.rootUser.carts = req.rootUser.carts.filter((cruval) => {
             return cruval.id != id;
         });
@@ -236,9 +223,6 @@ Router.get("/lougout", Authenticate, (req, res) => {
         req.rootUser.tokens = req.rootUser.tokens.filter((curelem) => {
             return curelem.token !== req.token
         });
-
-
-        res.clearCookie("Amazonweb", { path: "/" });
 
         req.rootUser.save();
         res.status(201).json(req.rootUser.tokens);

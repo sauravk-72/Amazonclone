@@ -15,6 +15,7 @@ const Buynow = () => {
         const res = await fetch("https://amazonclonebackbysk.onrender.com/cartdetails", {
             method: "GET",
             headers: {
+                Authorization:localStorage.getItem("token"),
                 Accept: "application/json",
                 "Content-Type": "application/json"
             },
@@ -26,6 +27,7 @@ const Buynow = () => {
         if (res.status !== 201) {
             console.log("error");
         } else {
+            //we set the value of carts
             setCartdata(data.carts);
         }
     };

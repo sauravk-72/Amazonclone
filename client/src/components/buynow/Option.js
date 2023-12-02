@@ -13,6 +13,7 @@ const Option = ({deletedata,get}) => {
       const res =  await fetch(`https://amazonclonebackbysk.onrender.com/remove/${deletedata}`,{
         method:"DELETE",
         headers:{
+          Authorization:localStorage.getItem("token"),
           Accept:"application/json",
           "Content-type":"application/json"
         },

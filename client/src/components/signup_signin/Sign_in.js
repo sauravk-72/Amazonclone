@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import "./signup.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,7 +14,7 @@ const Sign_in = () => {
         password: ""
     });
     console.log(logdata);
-
+    const history = useNavigate("");
     const { account, setAccount } = useContext(LoginContext);
 
     const adddata = (e) => {
@@ -30,6 +30,9 @@ const Sign_in = () => {
 
     const senddata = async (e) => {
         e.preventDefault();
+        
+        const getuserArr = localStorage.getItem("token");
+        console.log(getuserArr);
 
         const { email, password } = logdata;
 
@@ -55,7 +58,7 @@ const Sign_in = () => {
 
         if(res.status == 400 || !json){
             console.log("invalid details");
-            toast.warn("invalid details",{
+            toast.warn("Invalid Details",{
                 position: "top-center",
             })
         }else{
@@ -63,9 +66,10 @@ const Sign_in = () => {
             
             
              //Changes
-             localStorage.setItem('token', json.authtoken);
+             localStorage.setItem('token', json.token);
+             history("/")
              setAccount(json)
-            toast.success("user valid",{
+            toast.success("Successfuly loggedin",{
                 position: "top-center",
             })
             setData({...logdata,email:"",password:""});
@@ -96,14 +100,14 @@ const Sign_in = () => {
                             <input type="password"
                                 onChange={adddata}
                                 value={logdata.password}
-                                name="password" placeholder='At least 6 char' id="password" />
+                                name="password" id="password" />
                         </div>
                         <button className='signin_btn' onClick={senddata}>Continue</button>
                     </form>
                 </div>
                 <div className="create_accountinfo">
-                    <p>New To Amzon</p>
-                    <NavLink to="/register">  <button>Create Your amazon account</button></NavLink>
+                    <p>New To Amazon</p>
+                    <NavLink to="/register">  <button>Create Your Amazon account</button></NavLink>
                 </div>
             </div>
             <ToastContainer />

@@ -1,4 +1,5 @@
-const products = []
+//make a blank array which will store store all products
+const products = []  
 
 export const getProductsreducer = (state={products},action)=>{
     switch(action.type){

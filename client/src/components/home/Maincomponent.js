@@ -9,12 +9,12 @@ import {useDispatch,useSelector} from "react-redux";
 
 
 const Maincomponent = () => {
-    
+    //we will get products through useSelector and will call reducer funtion
     const {products} = useSelector(state => state.getproductsdata);
-    console.log(products);
+    //console.log(products)
 
     const dispatch = useDispatch();
-
+//we will use useEffect to get producst whenver we use homepage  by calling get products function
     useEffect(()=>{
         dispatch(getProducts());
     },[dispatch]);

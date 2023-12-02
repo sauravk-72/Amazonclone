@@ -4,7 +4,7 @@ import './banner.css';
 
 const data = [
     "https://cdn.wccftech.com/wp-content/uploads/2022/05/fwebp-10.webp",
-    "https://hungamadeal.co.in/wp-content/uploads/2019/10/amazon-12.jpg",
+    "https://img.freepik.com/free-vector/flat-horizontal-sale-banner-template-with-photo_23-2149000923.jpg?w=1380&t=st=1701092371~exp=1701092971~hmac=abc793a51cfbcf8fa05238fea03b623ee591b61352641acbc4c43d1731c059d5",
     
    
     "https://m.media-amazon.com/images/G/31/img18/Fashion/2019/dec/EOSSL1/1._CB427602012_.jpg",

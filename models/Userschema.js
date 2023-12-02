@@ -48,7 +48,7 @@ const Userschema = new mongoose.Schema({
     carts: Array
 });
 
-
+//using pre method..before saving user call... middleware next() in database we will hash the password
 Userschema.pre("save", async function (next) {
     if (this.isModified("password")) {
         this.password = await bcrypt.hash(this.password, 12);
@@ -60,14 +60,15 @@ Userschema.pre("save", async function (next) {
 });
 
  //token generator
-Userschema.methods.generateAuthtokenn =async function(){
+Userschema.methods.generateAuthToken =async function(){
     try{
-        let token=jwt.sign({_id:this._id},secretKey,{
+        //payload and secret key
+        let newtoken=jwt.sign({_id:this._id},secretKey,{
             expiresIn:"1d",
         });
-        this.tokens =this.tokens.concat({token:token});
+        this.tokens =this.tokens.concat({token:newtoken});
         await this.save();
-        return token;
+        return newtoken;
     }catch(error){
         console.log(error);
     }

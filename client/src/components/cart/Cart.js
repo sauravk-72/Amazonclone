@@ -18,7 +18,7 @@ const Cart = () => {
 
   const [inddata, setInddata] = useState("");
   console.log(inddata);
-
+//fetch data from backend
   const getinddata = async () => {
     const res = await fetch(`https://amazonclonebackbysk.onrender.com/getproductsone/${id}`, {
       method: "GET",
@@ -30,7 +30,7 @@ const Cart = () => {
     
     const data = await res.json();
     // console.log(data);
-
+// we set the data with help of usestate
     if (res.status !== 201) {
       console.log("no data available");
     } else {
@@ -39,7 +39,7 @@ const Cart = () => {
     }
 
   }
-
+//whenevr id is changed then useEffect should be called---reason for adding id in usfefect array
   useEffect(() => {
     setTimeout(getinddata,1000)
   }, [id]);
@@ -52,13 +52,13 @@ const Cart = () => {
     const checkres = await fetch(`https://amazonclonebackbysk.onrender.com/addcart/${id}`, {
       method: "POST",
       headers: {
-        Accept:"application/json",
+        Authorization:localStorage.getItem("token"),
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
         inddata
       }),
-      
+      credentials: "include"
     });
 
 
@@ -78,6 +78,7 @@ const Cart = () => {
 
 
   return <div className='cart_section'>
+    {/*if we will get data then only we will show this*/}
     {inddata && Object.keys(inddata).length &&
       <div className="cart_container">
         <div className="left_cart">

@@ -26,7 +26,9 @@ const Sign_up = () => {
     }
 
     const senddata = async (e) => {
+        //on clicking button it will not reload the page
         e.preventDefault();
+        //as soon as the user enter the data it will be stored in udata
         const { fname, email, mobile, password, cpassword } = udata;
 
         const res = await fetch("https://amazonclonebackbysk.onrender.com/register", {
@@ -46,15 +48,16 @@ const Sign_up = () => {
 
         if (res.status === 422 || !json) {
             // alert("no data")
-            toast.warn("invalid details", {
+            toast.warn("No data", {
                 position: "top-center",
             })
         } else {
             // alert("data succesfully adde");
-            localStorage.setItem("token",json.authtoken)
-            toast.success("data succesfully added", {
+            localStorage.setItem("token",json.token)
+            toast.success("Account created successfully", {
                 position: "top-center",
             })
+            //as sson as data is added successfully we will blank the data
             setUdata({ ...udata, fname: "", email: "", mobile: "", password: "", cpassword: "" });
         }
     }

@@ -38,6 +38,7 @@ const Navbaar = () => {
         const res = await fetch("https://amazonclonebackbysk.onrender.com/validuser", {
             method: "GET",
             headers: {
+                Authorization:localStorage.getItem("token"),
                 Accept: "application/json",
                 "Content-Type": "application/json"
             },
@@ -68,6 +69,7 @@ const Navbaar = () => {
         const res2 = await fetch("https://amazonclonebackbysk.onrender.com/lougout", {
             method: "GET",
             headers: {
+                Authorization:localStorage.getItem("token"),
                 Accept: "application/json",
                 "Content-Type": "application/json"
             },
@@ -125,11 +127,11 @@ const Navbaar = () => {
                     <div className='cart_btn'>
                         {
                             account ? <NavLink to="/buynow">
-                                <Badge badgeContent={account.carts.length} color="primary">
+                                <Badge  color="primary">
                                     <ShoppingCartIcon id="icon" />
                                 </Badge>
                             </NavLink> : <NavLink to="/login">
-                                <Badge badgeContent={0} color="primary">
+                                <Badge  color="primary">
                                     <ShoppingCartIcon id="icon" />
                                 </Badge>
                             </NavLink>
@@ -142,7 +144,7 @@ const Navbaar = () => {
                             aria-controls={open ? 'basic-menu' : undefined}
                             aria-haspopup="true"
                             aria-expanded={open ? 'true' : undefined}
-                            onClick={handleClick}>{account.fname[0].toUpperCase()}</Avatar> :
+                            onClick={handleClick}>S</Avatar> :
                             <Avatar className='avatar'
                                 id="basic-button"
                                 aria-controls={open ? 'basic-menu' : undefined}

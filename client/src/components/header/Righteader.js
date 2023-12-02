@@ -5,11 +5,41 @@ import { NavLink } from 'react-router-dom';
 import { Divider } from '@mui/material';
 import "./rightheader.css"
 import LogoutIcon from '@mui/icons-material/Logout';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 
-const Rightheader = ({ logclose,logoutuser}) => {
-
+const Rightheader = ({ logclose}) => {
+    const history = useNavigate();
     const { account, setAccount } = useContext(LoginContext);
+    const logoutuser = async () => {
+        const res2 = await fetch("https://amazonclonebackbysk.onrender.com/lougout", {
+            method: "GET",
+            headers: {
+                Authorization:localStorage.getItem("token"),
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            
+        });
+
+        const data2 = await res2.json();
+        console.log(data2);
+
+        if (res2.status !== 201) {
+            console.log("error");
+        } else {
+            console.log("data valid log");
+            // alert("logout")
+            toast.success("User logout", {
+                position: "top-center",
+            })
+            history("/");
+            setAccount(false);
+
+        }
+    };
+
 
     return (
         <>
@@ -42,7 +72,7 @@ const Rightheader = ({ logclose,logoutuser}) => {
                         account ? 
                         <div className="flag">
                             <LogoutIcon style={{fontSize:18,marginRight:4}} />
-                            <h3 onClick={()=>logoutuser()} style={{cursor:"pointer",fontWeight:500}}>Logout</h3>
+                            <h3 onClick={logoutuser} style={{cursor:"pointer",fontWeight:500}}>Logout</h3>
                         </div>:
                         <NavLink to="login">Sign In</NavLink>
                     }
